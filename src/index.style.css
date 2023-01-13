@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
+
+/* -- global variales -- */
+
+*{
+    font-family: 'Roboto', sans-serif;
+}
+
+
+
+.light-theme{
+    --transparent-color: rgba(255, 255, 255, .3);
+    --solid-transparent-color: rgba(255, 255, 255, .6);
+    --solid-menu-color: white;
+    --text-color: black;
+    --wallpaper-url: url('./assets/images/light.wallpaper.jpg')
+}
+
+.dark-theme{
+    --transparent-color: rgba(0, 0, 0, .3);
+    --solid-transparent-color: rgba(0, 0, 0, .6);
+    --solid-menu-color: #1a1a1a;
+    --text-color: rgb(238, 238, 238);
+    --wallpaper-url: url('./assets/images/dark.wallpaper.jpg')
+}
+
+
+#main_background{
+    background-image: var(--wallpaper-url);
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.full-screen{
+
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+
+}
+
