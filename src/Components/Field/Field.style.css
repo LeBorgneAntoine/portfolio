@@ -18,17 +18,17 @@
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color:  rgba(255, 255, 255, .3);
+    color:  rgba(255, 255, 255, .4);
 
     opacity: 1; /* Firefox */
   }
   
   :-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color:  rgba(255, 255, 255, .3);
+    color:  rgba(255, 255, 255, .4);
 
   }
   
   ::-ms-input-placeholder { /* Microsoft Edge */
-    color:  rgba(255, 255, 255, .3);
+    color:  rgba(255, 255, 255, .4);
 
   }

@@ -6,22 +6,43 @@
     font-family: 'Roboto', sans-serif;
 }
 
+:root{
+    --primary-color: #0A7CFF;
+    --primary-gradient-color: linear-gradient(90deg, rgb(53, 142, 238) 10%, rgba(55,151,251,1) 50%, rgb(52, 140, 235) 90%);
+    --control-center-wdith: 300px
+}
 
 
 .light-theme{
     --transparent-color: rgba(255, 255, 255, .3);
+    --very-transparent-color: rgba(255, 255, 255, .1);
+    --heighlight-color: rgba(255, 255, 255, .3);
+    --soft-heighlight-color: rgba(255, 255, 255, .1);
     --solid-transparent-color: rgba(255, 255, 255, .6);
+    --menu-background: rgba(255, 255, 255, 0.253);
     --solid-menu-color: white;
     --text-color: black;
-    --wallpaper-url: url('./assets/images/light.wallpaper.jpg')
+    --wallpaper-url: url('./assets/images/light.wallpaper.jpg');
+    --border-color: rgba(255, 255, 255, 0.1);
+    --separator-color: rgba(48, 48, 48, 0.11);
+    --menu-heighlight: rgba(0, 0, 0, 0.082);
+
 }
 
 .dark-theme{
     --transparent-color: rgba(0, 0, 0, .3);
+    --very-transparent-color: rgba(0, 0, 0, .1);
+    --heighlight-color: rgba(255, 255, 255, .3);
+    --soft-heighlight-color: rgba(255, 255, 255, .1);
     --solid-transparent-color: rgba(0, 0, 0, .6);
     --solid-menu-color: #1a1a1a;
     --text-color: rgb(238, 238, 238);
-    --wallpaper-url: url('./assets/images/dark.wallpaper.jpg')
+    --wallpaper-url: url('./assets/images/dark.wallpaper.jpg');
+    --border-color: rgba(255, 255, 255, 0.1);
+    --separator-color: rgba(255, 255, 255, .3);
+    --menu-heighlight: rgba(253, 253, 253, 0.123);
+    --menu-background: rgba(0, 0, 0, 0.411);
+
 }
 
 
@@ -47,3 +68,28 @@
 
 }
 
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Opera and Firefox */
+  }
+
+.divide{
+    display: flex;
+    gap: 10px;
+}
+
+.divide.horizontal{
+    flex-direction: row;
+    width: 100%;
+}
+
+.divide.vertical{
+    flex-direction: column;
+    height: 100%;
+
+}

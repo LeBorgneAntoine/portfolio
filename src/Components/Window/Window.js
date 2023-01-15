@@ -18,6 +18,7 @@ function Window({currentFocus, setCurrentFocus, onFocus, app, setMenuItems}){
     const {tasks, setTasks} = useContext(getTaskContext());
     const [isMaximized, setMaximized] = useState(false);
     const [isMinimized, setMinimized] = useState(false);
+    const [isSilent, setSilent] = useState(app.silent);
     const [additionalContent, setAdditionalContent] = useState({});
 
     const menuItems = useRef([]);
@@ -33,6 +34,9 @@ function Window({currentFocus, setCurrentFocus, onFocus, app, setMenuItems}){
 
         window.addEventListener('mousemove',mouseMove)
     
+        if(app.silent){
+            minimize();
+        }
     
         return () => {
             window.removeEventListener('mousemove', mouseMove);
@@ -40,14 +44,20 @@ function Window({currentFocus, setCurrentFocus, onFocus, app, setMenuItems}){
         }
     }, [])
 
+    
+
+    useEffect(() => {
+
+        if(currentFocus === app._id && isMinimized){
+            setMinimized(false);
+        }
+
+    }, [currentFocus])
+
 
     function onMouseDown(e){
 
-        console.log(e.target.classList)
-
         if(e.target.classList.contains('draggable-bar')){
-
-            
 
             onPress.current = true;
             xOffset.current = (e.nativeEvent.offsetX)
@@ -79,24 +89,38 @@ function Window({currentFocus, setCurrentFocus, onFocus, app, setMenuItems}){
     }
 
     function closeWindow(){
-        setTasks(tasks.filter((value) => value._id !== app._id))
+
+        if(app.runInBackground){
+            minimize()
+        }else{
+            setTasks(tasks.filter((value) => value._id !== app._id))
+        }
     }
 
     function maximize(){
 
-        setMaximized(true);
-        setPosX(0)
-        setPosY(30)
+        if(!isMaximized){
+            setMaximized(true);
+            setPosX(0)
+            setPosY(30)
+        }else{
+            setMaximized(false);
+            setPosX(0)
+            setPosY(30)
+        }
+        
     }
 
     function minimize(){
-
+        setMinimized(true);
+        setCurrentFocus('')
     }
 
     function handleFocus(){
 
         setMenuItems(menuItems.current)
         setCurrentFocus(app._id)
+        setMinimized(false);
 
     }
 
@@ -105,10 +129,15 @@ function Window({currentFocus, setCurrentFocus, onFocus, app, setMenuItems}){
         handleFocus();
     }
 
-   
     
+    function commandInterpret(command){
 
-    return <div onMouseDown={handleFocus} style={{left: posX, top: posY, width: app.defaultSize ? app.defaultSize.width : null,  height: app.defaultSize ? app.defaultSize.height : null}} className={"window "+ (app.transparent? 'transparent ' : '') + (isMaximized ? 'maximize ' : '') + (currentFocus === app._id ? 'focus ' : '')}>
+        if(command === 'Quit') closeWindow();
+
+    }
+
+
+    return <div onMouseDown={handleFocus} style={{left: posX, top: posY, width: app.defaultSize ? app.defaultSize.width : null,  height: app.defaultSize ? app.defaultSize.height : null}} className={"window "+ (app.transparent? 'transparent ' : '') + (app.tint? 'wallpaperTint ' : '') + (isMaximized ? 'maximize ' : '')  + (isMinimized ? 'minimize ' : '') + (currentFocus === app._id ? 'focus ' : '')}>
 
         <div onMouseMove={onMouseMove} onMouseLeave={onMouseLeave} onMouseUp={onMouseLeave} onMouseDown={onMouseDown} className="draggable-bar">
             
@@ -116,11 +145,13 @@ function Window({currentFocus, setCurrentFocus, onFocus, app, setMenuItems}){
                 <CloseIcon className="icon" />
             </div>
 
+            <div onClick={minimize} className="button minimize noselect">
+                <h5 className="icon" >-</h5>
+            </div>
+
             {
                 !app.defaultSize && <>
-                        <div onClick={closeWindow} className="button minimize">
-                            <h5 className="icon" >-</h5>
-                        </div>
+                     
 
                         <div onClick={maximize} className="button maximize">
                             <MaximizeIcon className="icon" />
@@ -129,21 +160,26 @@ function Window({currentFocus, setCurrentFocus, onFocus, app, setMenuItems}){
                 </>
             }
            
-            <div className="additional-content">
+            { additionalContent.stackNavigation && <div className="stack-navigation">
 
-                {
-                    additionalContent.onGoBack && <div>
+                <div className="back-stack">
 
-                    </div>
-                }
+                </div>
 
+                <div className="back-stack">
+
+                </div>
 
             </div>
+    
+            }
+
+            { additionalContent.search && <input placeholder={additionalContent.search.placeholder? additionalContent.search.placeholder : 'Search...'} className="search-input" />}
 
         </div>
 
         <div className="container">
-            {app.ReactComponent && <app.ReactComponent currentFocus={currentFocus} id={app._id} menuItems={defineMenuItems}  onFocus={onFocus} />}
+            {app.ReactComponent && <app.ReactComponent additionalContent={setAdditionalContent} currentFocus={currentFocus} onFocus={currentFocus === app._id} windowCommands={commandInterpret} id={app._id} menuItems={defineMenuItems} />}
         </div>
 
 

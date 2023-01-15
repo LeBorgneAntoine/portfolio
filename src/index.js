@@ -11,7 +11,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 function App(){
 
-  const [theme, setTheme] = useState('light-theme');
+  const [theme, setTheme] = useState('dark-theme');
   const [login, setLogin] = useState(false);
 
   return <> 

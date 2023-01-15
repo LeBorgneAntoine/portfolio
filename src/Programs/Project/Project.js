@@ -1,12 +1,16 @@
 import React, { useEffect } from "react";
 import { ReactComponent as ProjectIcon } from '../../assets/icons/app-store.svg';
 
-function Project({menuItems}){
+function Project({menuItems, windowCommands}){
 
     useEffect(() => {
 
         menuItems([
-            {title: 'Projects'},
+            {title: 'Projects', submenu: [
+                {title: 'About Projects'},
+                {separator: true},
+                {title: 'Quit Projects', onClick: () => windowCommands('Quit')}
+            ]},
             {title: 'File'},
             {title: 'Edit'},
             {title: 'View'},
@@ -14,11 +18,10 @@ function Project({menuItems}){
             {title: 'Help'},
         ])
 
-
     }, [])
 
     return <div>
-
+        
     </div>
 }
 

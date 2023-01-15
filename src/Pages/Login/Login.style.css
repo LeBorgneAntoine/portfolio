@@ -6,6 +6,7 @@
     display: flex;
     align-content: center;
     justify-content: center;
+    backdrop-filter: brightness(.9);
 
 }
 
@@ -15,8 +16,20 @@
 
 .default-input.login{
 
-    height: 30px;
-    width: 250px;
+    height: 32px;
+    width: 170px;
+    border-radius: 50px;
+    padding: 0px 17px;
+    font-size: 13px;
+    box-shadow: 0px 0px 40px 10px rgba(0, 0, 0, .2);
+    border: none;
+}
+
+#login_form h2{
+
+    color: white;
+    backdrop-filter: shadow(0px, 0px, 10px, rgba(0, 0, 0, .1));
+
 }
 
 #login_form{
@@ -55,8 +68,8 @@
 }
 
 #login_profile_picture{
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
 }
 
 .time{
@@ -79,4 +92,21 @@
         transform: translateY(0%);
     }
 
+}
+
+.top-corner{
+    position: absolute;
+    right: 10px;
+    color: white;
+    height: 35px;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.top-corner h5{
+    margin: 0;
+    font-size: 15px;
+    font-weight: 400;
 }

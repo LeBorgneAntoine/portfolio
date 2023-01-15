@@ -15,6 +15,8 @@ function Dock({apps, onOpenApp, tasks}){
 
         {apps.filter((app) => app.pined).map((app, index) => <AppIcon index={index} app={app} isOpen={tasks.findIndex((value) => value._id === app._id) >= 0} onClick={onOpenApp} key={index} />)}
 
+        {apps.filter((app) => !app.pined && (tasks.findIndex((task) => app._id === task._id) >= 0)).length > 0 && <div className="task-separator" />}
+
         {apps.filter((app) => !app.pined && (tasks.findIndex((task) => app._id === task._id) >= 0)).map((app, index) => <AppIcon index={index} app={app} isOpen={tasks.findIndex((value) => value._id === app._id) >= 0} onClick={onOpenApp} key={index} />)}
 
 
@@ -40,7 +42,7 @@ function AppIcon({app, onClick, isOpen, index}){
 
     return <div onClick={handleOnClick} className={"app-icon-container "+(isOpen ? 'open' : '')}>
 
-        <app.IconComponent style={{fill: 'auto'}} className={'app-icon'} />
+        {app.iconPath ? <img src={app.iconPath} className={'app-icon noselect'} /> : <app.IconComponent style={{fill: 'auto'}} className={'app-icon'} />}
 
         <div className="bubble-info">
             <h3>{app.name}</h3>

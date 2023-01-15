@@ -1,0 +1,11 @@
+
+
+.navigation-container{
+
+
+    display: inline-flex;
+    flex-direction: column;
+    padding-left: 20px;
+
+
+}

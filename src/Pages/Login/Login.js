@@ -10,27 +10,25 @@ const LoginContext = getLoginContext();
 
 function Login({}){
 
-    const [unlock, setUnlock] = useState(false);
-
     const {setLogin} = useContext(LoginContext);
+    const [currentTime, setCurrentTime] = useState(getTime());
+
+
+    function getTime(){
+        return moment().format('ddd MMM DD  H:mm A')
+    }
 
     useEffect(() => {
 
-        if(!unlock){
-            document.addEventListener('keypress', handleUnlock)
-        }else{
-            document.removeEventListener('keypress', handleUnlock)
-        }
-        
+        let timeInterval = setInterval(updateTime, 10000)
+
         return () => {
-            document.removeEventListener('keypress', handleUnlock)
+            clearInterval(timeInterval)
         }
+    }, [])
 
-    }, [unlock])
-
-
-    function handleUnlock(){
-        setUnlock(true);
+    function updateTime(){
+        setCurrentTime(getTime())
     }
 
 
@@ -43,30 +41,24 @@ function Login({}){
     }
 
 
-    return <div className={unlock ? "login-unlocked full-screen" : "login-locked full-screen"}>
+    return <div className={"login-unlocked full-screen"}>
         
-        {unlock ? <form id="login_form" onSubmit={handleLogin}>
+        <div className="top-corner">
+                <h5>{currentTime}</h5>
+        </div>
+
+
+        <form id="login_form" onSubmit={handleLogin}>
 
             <img id="login_profile_picture" alt="Profile picture" src={profilePicture} />
-            
+
             <h2>Antoine LE BORGNE</h2>
 
-            <div id="valid-login-input">
-                <Field placeholder={'Password'} className={'login'} password />
-                <div onClick={handleLogin} className="login-button">
-                        <LoginIcon />
-                </div>
-            </div>
+            <Field placeholder={'Enter password'} className={'login'} password />
+        
 
         </form>
-        :
-        <>
-            <div className="time">
-                <h1>{moment().format('DD/MM/YYYY')}</h1>
-                <h1>{moment().format('HH:mm')}</h1>
-            </div>
-        </>
-        }
+
     </div>
 
 }
