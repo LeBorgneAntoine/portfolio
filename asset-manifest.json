@@ -1,10 +1,39 @@
 {
   "files": {
-    "main.js": "/portfolio/static/js/main.737e91ae.js",
+    "main.css": "/portfolio/static/css/main.89d9ef63.css",
+    "main.js": "/portfolio/static/js/main.0882ecf7.js",
+    "static/media/dark.wallpaper.jpg": "/portfolio/static/media/dark.wallpaper.b1294ba0bb360c7ab28c.jpg",
+    "static/media/light.wallpaper.jpg": "/portfolio/static/media/light.wallpaper.a91734a81ed15a0aa540.jpg",
+    "static/media/contacts.png": "/portfolio/static/media/contacts.5b3b75cd350ac28fd721.png",
+    "static/media/photo_profile.png": "/portfolio/static/media/photo_profile.eadc49a49cf5d600e22c.png",
+    "static/media/trash.png": "/portfolio/static/media/trash.ba5cf1a25680f13b64ef.png",
+    "static/media/settings.png": "/portfolio/static/media/settings.36402a161409b0bad607.png",
+    "static/media/finder.png": "/portfolio/static/media/finder.5d3c1f68e515e1fd961d.png",
+    "static/media/safari.png": "/portfolio/static/media/safari.f775245d2a13dd9763d5.png",
+    "static/media/terminal.png": "/portfolio/static/media/terminal.22414e1132f06bbdbc12.png",
+    "static/media/app-store.png": "/portfolio/static/media/app-store.60262b81174b1ed85f17.png",
+    "static/media/books.png": "/portfolio/static/media/books.0cbc03bc2b15915d283e.png",
+    "static/media/mail.png": "/portfolio/static/media/mail.a7d52885a7fcf2a67f4e.png",
+    "static/media/settings.svg": "/portfolio/static/media/settings.dbf819a9ee3b464bb03724b8d497610a.svg",
+    "static/media/airdrop.svg": "/portfolio/static/media/airdrop.ccb624e025ece2b55e67c8b9d7061d43.svg",
+    "static/media/app-store.svg": "/portfolio/static/media/app-store.f5795160daa013856200180c32845cbb.svg",
+    "static/media/apple.svg": "/portfolio/static/media/apple.1467727ec11a1139137e75eae10ed20c.svg",
+    "static/media/books.svg": "/portfolio/static/media/books.97f77acbb61eacb83dfef09538990614.svg",
     "index.html": "/portfolio/index.html",
-    "main.737e91ae.js.map": "/portfolio/static/js/main.737e91ae.js.map"
+    "static/media/wifi.svg": "/portfolio/static/media/wifi.b9513b4597423e64b005f29eae07a2c5.svg",
+    "static/media/bluetooth.svg": "/portfolio/static/media/bluetooth.3374e6e967ceb1e41a9852b8745ae85a.svg",
+    "static/media/login.svg": "/portfolio/static/media/login.ee938950e3184bab3251095ee0dcd471.svg",
+    "static/media/control-centre.svg": "/portfolio/static/media/control-centre.9cfbcb5d55f52e63dbb7103d3bbdb8bb.svg",
+    "static/media/close.svg": "/portfolio/static/media/close.0f305e0fa3b10cb6fbd53c61f1d9ec7b.svg",
+    "static/media/spotlight.svg": "/portfolio/static/media/spotlight.76c334d9ea9fb8fe7ab9d2fa31f8bbdd.svg",
+    "static/media/moon.svg": "/portfolio/static/media/moon.49f6d3b110ae22dd3352860dd4b90ad0.svg",
+    "static/media/maximize.svg": "/portfolio/static/media/maximize.445d47f185dd236134d89a49e6012b76.svg",
+    "static/media/minimize.svg": "/portfolio/static/media/minimize.be8907e3e17451f2a17ab4ef615a7dc1.svg",
+    "main.89d9ef63.css.map": "/portfolio/static/css/main.89d9ef63.css.map",
+    "main.0882ecf7.js.map": "/portfolio/static/js/main.0882ecf7.js.map"
   },
   "entrypoints": [
-    "static/js/main.737e91ae.js"
+    "static/css/main.89d9ef63.css",
+    "static/js/main.0882ecf7.js"
   ]
 }
