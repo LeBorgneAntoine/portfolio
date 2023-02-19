@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { ReactComponent as AboutIcon } from '../../assets/icons/books.svg';
+import { Section } from "../../Components";
 
 function About({menuItems, onFocus, currentFocus, id}){
 
@@ -18,16 +19,10 @@ function About({menuItems, onFocus, currentFocus, id}){
 
     }, [])
 
+    return <div >
+        <Section title={''}>
 
-    function handleFocus(){
-
-
-
-    }
-
-
-    return <div onClick={handleFocus}>
-
+        </Section>
     </div>
 
 }
