@@ -146,7 +146,7 @@
 .control-center-container{
 
     width: var(--control-center-wdith);
-    height: 370px;
+    height: 400px;
     background-color: var(--very-transparent-color);
     top: 35px;
     position: absolute;
@@ -219,8 +219,50 @@
 
 .control-center-container .widget.display{
 
-    width: 100%;
+    width: calc(100% - 22px);
     height: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 0 10px;
+}
+
+.widget.display h5{
+    height: 10px;
+    margin: 0;
+    color: var(--text-color);
+}
+
+.widget-slider{
+    position: relative;
+    width: calc(100% - 40px)
+
+}
+
+.right-icon {
+
+    background-color: var(--menu-heighlight);
+    height: 30px;
+    width: 30px;
+    border-radius: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+.right-icon-svg{
+
+    width: 20px;
+    height: 20px;
+    
+
+}
+
+.widget.display .divide.horizonal{
+
+  
 }
 
 .widgets-icon {

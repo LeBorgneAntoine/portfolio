@@ -15,7 +15,7 @@ function Desktop(){
     const [menuItems, setMenuItems] = useState([]);
     const [hideDock, setHideDock] = useState(false);
     const [currentFocus, setCurrentFocus] = useState('');
-    const [displayValue, setDisplayValue] = useState(.5);
+    const [displayValue, setDisplayValue] = useState(0);
 
     useEffect(() => {
 
@@ -66,12 +66,22 @@ function Desktop(){
                 tasksCopy.push(appObject)
                 setTasks(tasksCopy)
             }else{
-                console.log('inexisting app')
+                console.error('uknown app')
             }
 
-            
-
         }
+
+    }
+
+    useEffect(() => {
+
+        console.log(tasks)
+
+    }, [tasks])
+
+    function closeAppByID(id){
+
+        setTasks(tasks.filter((value) => value._id !== id))
 
     }
 
@@ -94,9 +104,17 @@ function Desktop(){
 
                 <Menu openApp={openApplicationByID} currentMenuItems={menuItems} />
 
-                {tasks.map((app, index) => <Window currentFocus={currentFocus} setCurrentFocus={setCurrentFocus} menuItems={menuItems} setMenuItems={setMenuItems} onOverlapDock={overlapDock} app={app} key={index} />)}
+
+
+                {tasks.map((app, index) => app.noWindow ? <app.ReactComponent openApp={openApplicationByID} closeApp={closeAppByID} currentFocus={currentFocus} setCurrentFocus={setCurrentFocus} menuItems={menuItems} setMenuItems={setMenuItems} onOverlapDock={overlapDock} app={app} key={index} /> : 
+                
+                <Window closeApp={closeAppByID} openApp={openApplicationByID} currentFocus={currentFocus} setCurrentFocus={setCurrentFocus} menuItems={menuItems} setMenuItems={setMenuItems} onOverlapDock={overlapDock} app={app} key={index} />)}
+
+
 
                 <Dock tasks={tasks} hide={hideDock} apps={availableApps} onOpenApp={handleOpenApp} />
+
+                <div className="fullscreen brightness" style={{opacity: displayValue}} />
 
             </TaskContext.Provider>
         </DisplayContext.Provider>

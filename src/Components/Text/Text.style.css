@@ -1,0 +1,39 @@
+
+
+.text{
+
+    color: var(--text-color);
+
+}
+
+.text.large{
+
+    font-size: 30px;
+
+}
+
+.text.medium{
+
+    font-size: 15px;
+
+}
+
+.text.small{
+
+    font-size: 15px;
+
+}
+
+.text.bold{
+    font-weight: 900;
+}
+
+.text.thin{
+    font-weight: 400;
+}
+
+.text.secondary{
+
+    color: var(--secondary-text-color);
+
+}

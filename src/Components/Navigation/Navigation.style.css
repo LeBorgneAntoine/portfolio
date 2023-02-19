@@ -2,10 +2,153 @@
 
 .navigation-container{
 
+    width: 300px;
+    height: calc(100% - 150px);
+    gap: 10px;
+    padding-top: 10px;
+    position: relative;
+}   
 
-    display: inline-flex;
-    flex-direction: column;
-    padding-left: 20px;
 
 
+
+.navigation-container.full{
+    background-color: var(--solid-menu-color);
+}
+
+.link-container{
+
+    height: 35px;
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+    padding: 0 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    color: var(--text-color);   
+    border: 1px solid transparent;
+
+
+}
+
+.link-container.active{
+    background-color: var(--menu-heighlight);
+}
+
+.link-container h5{
+    font-weight: 400;
+    font-size: 1rem;
+    
+}
+
+.link-container:hover{
+    background-color: var(--menu-heighlight);
+}
+
+.link-icon{
+
+    height: 25px;
+    width: 25px;
+    margin-right: 10px;
+
+}
+
+.user-info-container{
+
+    height: 40px;
+    position: fixed;
+    bottom: 0;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}   
+
+.profile-picture-wrapper{
+
+    height: 40px;
+    width: 40px;
+    border-radius: 40px;
+    overflow: hidden;
+}
+
+
+.small-profile-picture{
+
+    height: 50px;
+    transform: translateX(-10px);
+}
+
+
+.text-user-info *{
+
+    margin: 0;
+
+}
+
+.search-section{
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 0px 10px;
+    margin-bottom: 20px; 
+    height: 30px;
+    width: calc(100% - 20px);
+}
+
+
+.search-nav{
+
+    height: 30px;
+    display: flex;
+    align-items: center;
+    padding: 0 35px;
+    padding-right: 30px;
+    border-radius: 5px;
+    color: var(--text-color);   
+    border: 1px solid var(--menu-heighlight);
+    outline-style: none;
+    width: calc(100%);
+    background-color: var(--menu-heighlight);
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.815);
+    transition-duration: 100ms;
+
+}
+
+.search-nav:focus{
+    box-shadow: 0px 0px 3px 2px var(--primary-color);
+}
+
+.cancel-search{
+
+    background-color: var(--secondary-text-color);
+    height: 15px;
+    width: 15px;
+    border-radius: 15px;
+    position: absolute;
+    right: 10px;
+    transform: translateY(-50%);
+
+    top: 50%;
+    z-index: 2;
+}
+
+.search-icon{
+
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    fill: var(--secondary-text-color);
+    transform: translateY(-50%);
+    top: 50%;
+    left: 10px;
+
+}
+
+
+
+.page-container{
+    width: 100%;
+    height: 100%;
+    position: relative;
 }

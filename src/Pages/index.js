@@ -1,7 +1,8 @@
-import Login from "./Login/Login"
+import Login, {LoginMobile} from "./Login/Login"
 import Desktop from "./Desktop/Desktop"
 
 export {
     Login,
-    Desktop
+    Desktop,
+    LoginMobile
 }

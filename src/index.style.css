@@ -22,11 +22,11 @@
     --menu-background: rgba(255, 255, 255, 0.253);
     --solid-menu-color: white;
     --text-color: black;
+    --secondary-text-color: rgb(49, 49, 49);
     --wallpaper-url: url('./assets/images/light.wallpaper.jpg');
     --border-color: rgba(255, 255, 255, 0.1);
     --separator-color: rgba(48, 48, 48, 0.11);
     --menu-heighlight: rgba(0, 0, 0, 0.082);
-
 }
 
 .dark-theme{
@@ -37,12 +37,12 @@
     --solid-transparent-color: rgba(0, 0, 0, .6);
     --solid-menu-color: #1a1a1a;
     --text-color: rgb(238, 238, 238);
+    --secondary-text-color: rgb(170, 170, 170);
     --wallpaper-url: url('./assets/images/dark.wallpaper.jpg');
-    --border-color: rgba(255, 255, 255, 0.1);
+    --border-color: rgba(255, 255, 255, 0.247);
     --separator-color: rgba(255, 255, 255, .3);
     --menu-heighlight: rgba(253, 253, 253, 0.123);
     --menu-background: rgba(0, 0, 0, 0.411);
-
 }
 
 
@@ -66,6 +66,12 @@
     top: 0;
     left: 0;
 
+}
+
+.app-full-container{
+    width: 100%;
+    height: 100%;
+    position: absolute;
 }
 
 .noselect {

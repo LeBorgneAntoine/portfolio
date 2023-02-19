@@ -1,17 +1,16 @@
 
 .window{
 
-    width: 1200px;
-    height: 700px;
+    width: 50%;
+    height: 60%;
     background-color: var(--solid-menu-color);
-    border-radius: 15px;
+    border-radius: 10px;
     overflow: hidden;
     position: absolute;
     animation: open-window 200ms ease-in-out;
-    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.274), 0px 40px 50px rgba(0, 0, 0, .1);
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.815), 0px 40px 50px rgba(0, 0, 0, .1);
     z-index: 0;
-    border: 1px solid rgba(255, 255, 255, 0.192)
-    
+    border: 1px solid rgba(255, 255, 255, 0.192);
 
 }
 
@@ -71,14 +70,18 @@
     height: 65px;
     top: 0;
     left: 0;
-    background-color: var(--solid-menu-color);
     display: flex;
     align-items: center;
     padding: 0 20px;
     gap: 10px;
     pointer-events: fill;
-    position: relative;
-    
+    position: absolute;
+    z-index: 10;
+}
+
+
+.draggable-bar.thin{
+    height: 30px;
 }
 
 .additional-content{
@@ -116,18 +119,9 @@
 
 }
 
-.button.close{
-    background-color: #FF605C
+.button.close, .button.maximize, .button.minimize{
+    background-color: #8181816e
 }
-
-.button.maximize{
-    background-color: #00CA4E
-}
-
-.button.minimize{
-    background-color: #FFBD44
-}
-
 
 .button.minimize:hover .icon{
     fill: rgb(158, 125, 62);
@@ -147,28 +141,8 @@
 
 }
 
-.button:hover .icon{
-    width: 20px;
-    height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.button.close:hover .icon{
-    width: 20px;
-    height: 20px;
-}
-
-.button.minimize:hover .icon{
-  color: rgb(88, 69, 33);
-}
 
 
-.button.maximize:hover .icon{
-    width: 7px;
-    height: 7px;
-}
 
 .back-stack{
 
@@ -203,4 +177,49 @@
     border: 1px solid var(--border-color);
     color: white;
     padding: 0px 10px;
+}
+
+.buttons-wrapper{
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+}
+
+.buttons-wrapper:hover .icon{
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttons-wrapper.focus .button.close{
+    background-color: #FF605C;
+}
+
+.buttons-wrapper.focus .button.minimize{
+    background-color: #FFBD44;
+}
+
+.buttons-wrapper.focus .button.maximize{
+    background-color: #00CA4E;
+}
+
+.button.close:hover .icon{
+    width: 20px;
+    height: 20px;
+}
+
+.button.minimize:hover .icon{
+  color: rgb(88, 69, 33);
+}
+
+
+.buttons-wrapper:hover .button.maximize .icon{
+    width: 7px;
+    height: 7px;
 }

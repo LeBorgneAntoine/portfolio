@@ -6,7 +6,7 @@ import {ReactComponent as MinimizeIcon} from '../../assets/icons/minimize.svg'
 
 import { getTaskContext } from "../../Context";
 
-function Window({currentFocus, setCurrentFocus, onFocus, app, setMenuItems}){
+function Window({currentFocus, setCurrentFocus, onFocus, app, setMenuItems, openApp}){
 
     const [posX, setPosX] = useState(document.body.scrollWidth / 2 - 500);
     const [posY, setPosY] = useState(document.body.scrollHeight / 2 + 200);
@@ -139,26 +139,32 @@ function Window({currentFocus, setCurrentFocus, onFocus, app, setMenuItems}){
 
     return <div onMouseDown={handleFocus} style={{left: posX, top: posY, width: app.defaultSize ? app.defaultSize.width : null,  height: app.defaultSize ? app.defaultSize.height : null}} className={"window "+ (app.transparent? 'transparent ' : '') + (app.tint? 'wallpaperTint ' : '') + (isMaximized ? 'maximize ' : '')  + (isMinimized ? 'minimize ' : '') + (currentFocus === app._id ? 'focus ' : '')}>
 
-        <div onMouseMove={onMouseMove} onMouseLeave={onMouseLeave} onMouseUp={onMouseLeave} onMouseDown={onMouseDown} className="draggable-bar">
+        <div onMouseMove={onMouseMove} onMouseLeave={onMouseLeave} onMouseUp={onMouseLeave} onMouseDown={onMouseDown} className={"draggable-bar "+(app.thinBar? 'thin' : '')}>
             
-            <div onClick={closeWindow} className="button close">
-                <CloseIcon className="icon" />
+            <div className={"buttons-wrapper "+(currentFocus === app._id ? 'focus ' : '')}>
+
+                <div onClick={closeWindow} className="button close">
+                    <CloseIcon className="icon" />
+                </div>
+
+                <div onClick={minimize} className="button minimize noselect">
+                    <h5 className="icon" >-</h5>
+                </div>
+
+                {
+                    !app.defaultSize && <>
+                        
+
+                            <div onClick={maximize} className="button maximize">
+                                <MaximizeIcon className="icon" />
+                            </div>
+
+                    </>
+                }
+
             </div>
 
-            <div onClick={minimize} className="button minimize noselect">
-                <h5 className="icon" >-</h5>
-            </div>
-
-            {
-                !app.defaultSize && <>
-                     
-
-                        <div onClick={maximize} className="button maximize">
-                            <MaximizeIcon className="icon" />
-                        </div>
-
-                </>
-            }
+          
            
             { additionalContent.stackNavigation && <div className="stack-navigation">
 
@@ -178,8 +184,9 @@ function Window({currentFocus, setCurrentFocus, onFocus, app, setMenuItems}){
 
         </div>
 
+
         <div className="container">
-            {app.ReactComponent && <app.ReactComponent additionalContent={setAdditionalContent} currentFocus={currentFocus} onFocus={currentFocus === app._id} windowCommands={commandInterpret} id={app._id} menuItems={defineMenuItems} />}
+            {app.ReactComponent && <app.ReactComponent openApp={openApp} additionalContent={setAdditionalContent} currentFocus={currentFocus} onFocus={currentFocus === app._id} windowCommands={commandInterpret} id={app._id} menuItems={defineMenuItems} />}
         </div>
 
 

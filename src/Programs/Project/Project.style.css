@@ -1,0 +1,32 @@
+
+
+.recents-container{
+    background-color: var(--solid-menu-color);
+    height: 100%;
+    position: absolute;
+    z-index: 2;
+    border-left: 1px solid black;
+    flex: 1;
+}
+
+.recents-container{
+    overflow: auto;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.project-page{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.main-banner{
+    background-color: #8383838e;  
+    height: 300px;
+    width: calc(100% - 100px);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}

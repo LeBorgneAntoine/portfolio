@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import './Settings.style.css';
 import { ReactComponent as SettingsIcon } from '../../assets/icons/settings.svg';
+import { Navigation } from "../../Components";
 
 function Settings({menuItems, windowCommands}){
 
@@ -31,7 +32,9 @@ function Settings({menuItems, windowCommands}){
     }, [])
 
     return <div>
+        <Navigation navigation={[
 
+        ]} />
     </div>
 
 }

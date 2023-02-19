@@ -1,15 +1,14 @@
-import About, {AboutIcon} from "./About/About";
+import About from "./About/About";
 import AboutThisPortfolio from "./AboutThisPortfolio/AboutThisPortfolio";
-import Project, {ProjectIcon} from "./Project/Project";
-import Settings, {SettingsIcon} from "./Settings/Settings";
+import Project from "./Project/Project";
+import Settings from "./Settings/Settings";
 import Github from "./Github/Github";
 import Finder from "./Finder/Finder";
 import Terminal from "./Terminal/Terminal";
 import Contacts from "./Contacts/Contacts";
+import Launcher from "./Launcher/Launcher";
 
-import mailLogo from '../assets/icons/mail.png'
 import settingsLogo from '../assets/icons/settings.png'
-import contacts from '../assets/icons/mail.png'
 import safariLogo from '../assets/icons/safari.png'
 import appStoreLogo from '../assets/icons/app-store.png'
 import bookLogo from '../assets/icons/books.png'
@@ -17,6 +16,33 @@ import finderLogo from '../assets/icons/finder.png'
 import terminalLogo from '../assets/icons/terminal.png'
 import contactLogo from '../assets/icons/contacts.png'
 import trashLogo from '../assets/icons/trash.png'
+import launcherLogo from '../assets/icons/launcher.png'
+import infoLogo from '../assets/icons/info.png'
+
+/*
+App option list:
+
+ Functionnal: 
+    - _id: task ID (open / close)
+    - _default: only one can be default, it represent the focused app when no focus
+    - ReactComponent: Content of the app (in the window)
+    - iconPath : path to the icon (since we using React, we need to import first, see up there)
+    - name : Name displayed in the Dock or Launcher
+    - pined : if true it get pined in the dock
+    - silent : start and run in background
+    - onStartup : launch on start up
+    - noWindow : if true, only the ReactComponent is render (without proper window container)
+    - defaultSize: take an object with width and height (note, if to use it the window can not be maximized)
+    - hidden: if true the application is not shown in launchpad
+    - fixed: fixed on the right end side of the dock (ex: trash or download folder)
+
+ Appearence: 
+    - tint : use the similar principe of "Tint window" on MacOS by bluring the background and get more or less the background color
+    - transparent: similar to tint but blrring is way down
+    - With none of the two aboves the background stay on solid color
+    - thinBar: reduce the height of the draggable bar on window, but prevente from using addition actions on it.
+    - hasNavigation: 
+*/
 
 
 
@@ -36,6 +62,16 @@ export default [
         onStartup: true,
     },
     {
+        _id: 'launcher',
+        _default: true,
+        ReactComponent: Launcher,
+        iconPath: launcherLogo,
+        name: 'Launchpad',
+        pined: true,
+        noWindow: true,
+        hidden: true,
+    },
+    {
         _id: 'about',
         ReactComponent: About,
         iconPath: bookLogo,
@@ -44,7 +80,8 @@ export default [
         defaultSize: {  
             width: 500,
             height: 500
-        }
+        },
+        thinBar: true,
     },
     {
         _id: 'contact',
@@ -73,28 +110,22 @@ export default [
         pined: true,
         name: 'Projects',
         tint: true,
-
-    },
-    {
-        _id: '_project',
-        ReactComponent: Project,
-        pined: false,
-        name: 'My projects',
-        transparent: true
+        hasNavigation: true,
     },
     {
         _id: 'profolio',
         ReactComponent: AboutThisPortfolio,
-        iconPath: settingsLogo,
+        iconPath: infoLogo,
         name: 'About this portfolio',
         defaultSize: {  
             width: 500,
             height: 600
         },
+        thinBar: true,
         
     },
     {
-        _id: 'setting',
+        _id: 'settings',
         ReactComponent: Settings,
         iconPath: settingsLogo,
         pined: true,
@@ -111,10 +142,9 @@ export default [
     },
     {
         _id: 'trash',
+        fixed: true,
         ReactComponent: Finder,
         iconPath: trashLogo,
         name: 'Trash',
-        pined: true,
-        tint: true,
     },
 ]

@@ -7,6 +7,12 @@ import {ReactComponent as WifiIcon} from '../../assets/icons/wifi.svg'
 import {ReactComponent as BluetoothIcon} from '../../assets/icons/bluetooth.svg'
 import {ReactComponent as AirDropIcon} from '../../assets/icons/airdrop.svg'
 import {ReactComponent as MoonIcon} from '../../assets/icons/moon.svg'
+import {ReactComponent as DisplayIcon} from '../../assets/icons/sun.svg'
+import {ReactComponent as ScreenIcon} from '../../assets/icons/screen.svg'
+import {ReactComponent as SpeakerIcon} from '../../assets/icons/speaker.svg'
+import {ReactComponent as ThemeIcon} from '../../assets/icons/theme.svg'
+import {ReactComponent as SoundIcon} from '../../assets/icons/airdrop.svg'
+
 
 import moment from "moment";
 import { getDisplayContext, getLoginContext, getThemeContext } from "../../Context";
@@ -61,8 +67,8 @@ function Menu({currentMenuItems, openApp}){
             submenu: [
                 {title: 'About this Portfolio', onClick: () => {openApp('profolio')}},
                 {separator: true},
-                {title: 'System settings...'},
-                {title: 'App store...'},
+                {title: 'System settings...',onClick: () => openApp('settings')},
+                {title: 'Projects...', onClick: () => openApp('project')},
                 {separator: true},
                 {title: 'Recent Items'},
                 {separator: true},
@@ -194,17 +200,20 @@ function ControlCenter(){
                         </div>
 
                         <div className="divide vertical">
-                            <h5 className="primary-text-multiline">Do Not</h5>
-                            <h5 className="primary-text-multiline">Disturb</h5>
+                            <h5 className="primary-text-multiline">Focus</h5>
+                            
                         </div>
 
                     </div>
 
                     <div className="divide horizontal">
 
-                        <div onClick={handleSwitchingTheme} className="widget theme">
+                        <div onClick={handleSwitchingTheme} className="widget theme divide vertical">
 
+                            <ThemeIcon className='secondary-icon' />
 
+                            <h5 className="primary-text">Toogle</h5>
+                            <h5 className="primary-text">Theme</h5>
 
 
                         </div>
@@ -220,12 +229,27 @@ function ControlCenter(){
 
             <div className="widget display">
 
-                <Slider value={displayValue} onChange={setDisplayValue} valueRange={[0, 1]} />
+                <h5>Display</h5>
+
+                <div className="divide horizonal">
+                    <Slider Icon={DisplayIcon} className={'widget-slider'} value={displayValue} onChange={setDisplayValue} valueRange={[1, 0]} />
+                    <div className="right-icon">
+                        <ScreenIcon className='right-icon-svg' />
+                    </div>
+                </div>
 
             </div>
 
             <div className="widget display">
                 
+                <h5>Sound</h5>
+
+                <div className="divide horizonal">
+                    <Slider Icon={SpeakerIcon} className={'widget-slider'} value={displayValue} onChange={() => {}} valueRange={[1, 0]} />
+                    <div className="right-icon">
+                        <SoundIcon className='right-icon-svg' />
+                    </div>
+                </div>
 
             </div>
 

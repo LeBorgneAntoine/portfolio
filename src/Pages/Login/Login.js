@@ -50,7 +50,9 @@ function Login({}){
 
         <form id="login_form" onSubmit={handleLogin}>
 
-            <img id="login_profile_picture" alt="Profile picture" src={profilePicture} />
+            <div className="picture-container">
+                <img id="login_profile_picture" alt="Profile picture" src={profilePicture} />
+            </div>
 
             <h2>Antoine LE BORGNE</h2>
 
@@ -64,4 +66,19 @@ function Login({}){
 }
 
 
+function LoginMobile(){
+
+
+    return <div>
+
+        
+
+
+    </div>
+
+}
+
 export default Login;
+export {
+    LoginMobile
+}

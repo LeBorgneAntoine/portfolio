@@ -1,11 +1,15 @@
-import React, { useRef } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import './Slider.style.css'
 
 
 function Slider({className, value, onChange, valueRange, Icon}){
 
-    const mouseDownRef = useRef()
+    const mouseOffsetX = useRef()
     const isPressing = useRef()
+
+    const [currentPosition, setCurrentPosition] = useState(200)
+    const mouseX = useRef();
+    const container = useRef();
 
     function mapValue(x, in_min, in_max, out_min, out_max) {
         return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
@@ -13,37 +17,53 @@ function Slider({className, value, onChange, valueRange, Icon}){
 
     function onMouseDown(e){
 
-        mouseDownRef.current = e.pageX;
+        mouseOffsetX.current = e.target.offsetLeft;
         isPressing.current = true;
 
     }
+
+    useEffect(() => {
+
+        let onMouseMove = (e) => mouseX.current = e.pageX
+    
+        window.addEventListener('mousemove', onMouseMove)
+
+        return () => {
+            window.removeEventListener('mousemove', onMouseMove)
+        }
+
+    }, [])
 
     function handleMove(e){
 
         if(isPressing.current){
 
-            let completeRange = e.target.parentNode.parentNode.offsetWidth;
-            let currentPosition = e.target.parentNode.parentNode.offsetWidth * mapValue(value, valueRange[0], valueRange[1], 0,1);
-            let movementAmount = (e.pageX - mouseDownRef.current);
+            let containerPosition = e.target.parentNode.getBoundingClientRect();
 
-            onChange(mapValue(e.pageX - e.target.parentNode.parentNode.getBoundingClientRect().left, 0, completeRange , 0, 1))
-        
+            let left = ( e.pageX - containerPosition.left) - e.target.offsetWidth / 2
+
+            if(left >= 1 && left <= (containerPosition.width - e.target.offsetWidth)){
+                setCurrentPosition(left)
+                onChange(mapValue(currentPosition, 0, containerPosition.width - e.target.offsetWidth, valueRange[0], valueRange[1]))
+            }
 
         }
     }   
 
     function clearMove(){
-        //isPressing.current = false;
+        isPressing.current = false;
+
     }
 
-    return <div   className={"slider-container"}>
+    return <div ref={container} className={"slider-container " + (className ? className : '')}>
 
-        <div style={{width: ((mapValue(value, valueRange[0], valueRange[1], 0, 100)) + '%') }} className="slider-progress">
+        <div style={{width: currentPosition + 25}} className="slider-progress">
 
+            {Icon && <Icon className={'slider-icon'} />}
 
-            <div onMouseLeave={clearMove} onMouseUp={clearMove} onMouseMove={handleMove} onMouseDown={onMouseDown} className="slider-cursor">
+        </div>
 
-            </div>
+        <div style={{left: currentPosition}} onMouseLeave={clearMove} onMouseUp={clearMove} onMouseMove={handleMove} onMouseDown={onMouseDown} className="slider-cursor">
 
         </div>
 
