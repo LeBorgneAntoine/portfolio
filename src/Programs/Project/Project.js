@@ -18,9 +18,31 @@ function Project({menuItems, windowCommands}){
             {title: 'Projects', submenu: [
                 {title: 'About Projects'},
                 {separator: true},
+                {title: 'Settings...'},
+                {separator: true},
+                {title: 'Services'},
+                {separator: true},
+                {title: 'Hide Project'},
+                {title: 'Hide others'},
+                {title: 'Show All'},
+                {separator: true},
                 {title: 'Quit Projects', onClick: () => windowCommands('Quit')}
             ]},
-            {title: 'Edit'},
+            {title: 'Edit', submenu: [
+                {title: 'Undo'},
+                {title: 'Redo'},
+                {separator: true},
+                {title: 'Cut'},
+                {title: 'Copy'},
+                {title: 'Paste'},
+                {title: 'Paste and Match Style'},
+                {title: 'Delete'},
+                {title: 'Select ALl'},
+                {separator: true},
+                {title: 'Start Dictation...'},
+                {title: 'Emoji & Symbols'},
+
+                ]},
             {title: 'Store', submenu: [
                 {title: 'Back'},
                 {title: 'Reload Page'},
@@ -34,11 +56,26 @@ function Project({menuItems, windowCommands}){
                 {separator: true},
                 {title: 'Account'},
                 {title: 'Sign Out'},
-       
-
             ]},
-            {title: 'Window'},
-            {title: 'Help'},
+            {title: 'Window', submenu: [
+                {title: 'Close'},
+                {title: 'Minimize'},
+                {title: 'Zoom'},
+                {title: 'Tile Window to Left of Screen'},
+                {title: 'Tile Window to Right of Screen'},
+                {title: 'Replace Tiled Window'},
+                {separator: true},
+                {title: 'Remove Window from Set'},
+                {title: 'Enter Full Screen'},
+                {separator: true},
+                {title: 'Bring All of Front'},
+                {separator: true},
+                {title: 'Project'},
+            ]},
+            {title: 'Help', submenu: [
+                {title: 'Projects Help'},
+                {title: 'About Projects & Privacy'},
+            ]},
         ])
 
     }, [])
@@ -53,10 +90,6 @@ function Project({menuItems, windowCommands}){
             <Link Icon={ReactIcon} pageID={'react'}>React</Link>
             <Link Icon={JavaIcon} pageID={'java'}>Java</Link>
         </Navigation>
-
-
-
-
 
 
         <NavigationPages currentPageID={pageID} setPageID={setPageID}>
